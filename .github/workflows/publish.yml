@@ -15,6 +15,6 @@ jobs:
           toolchain: stable
           override: true
 
-      - run: cargo publish --token ${{ secrets.CARGO_TOKEN }}
+      - run: cargo publish --token ${{ secrets.CRATES_TOKEN }}
         env:
-          CARGO_TOKEN: ${{ secrets.CARGO_TOKEN }}
+          CARGO_TOKEN: ${{ secrets.CRATES_TOKEN }}
