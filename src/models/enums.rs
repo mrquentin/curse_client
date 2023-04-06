@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize)]
 pub enum ModLoaderInstallMethod {
     #[serde(rename = "1")]
     ForgeInstaller,
@@ -10,7 +10,7 @@ pub enum ModLoaderInstallMethod {
     ForgeInstallerV2,
 }
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize)]
 pub enum ModLoaderType {
     #[serde(rename = "0")]
     Any,
@@ -45,7 +45,7 @@ impl Default for ModLoaderType {
     }
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Deserialize, Serialize)]
 pub enum ModsSearchSortField {
     #[serde(rename = "1")]
     Featured,
@@ -86,7 +86,7 @@ impl Default for ModsSearchSortField {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 pub enum ModStatus {
     #[serde(rename = "1")]
     New,
@@ -110,7 +110,7 @@ pub enum ModStatus {
     UnderReview,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Deserialize, Serialize)]
 pub enum SortOrder {
     #[serde(rename = "asc")]
     Ascending,
@@ -133,7 +133,7 @@ impl Default for SortOrder {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 pub enum FileRelationType {
     #[serde(rename = "1")]
     EmbeddedLibrary,
@@ -149,7 +149,7 @@ pub enum FileRelationType {
     Include,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 pub enum FileReleaseType {
     #[serde(rename = "1")]
     Release,
@@ -159,7 +159,7 @@ pub enum FileReleaseType {
     Alpha,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 pub enum FileStatus {
     #[serde(rename = "1")]
     Processing,
@@ -193,10 +193,53 @@ pub enum FileStatus {
     FailedPublishing,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 pub enum HashAlgo {
     #[serde(rename = "1")]
     SHA1,
     #[serde(rename = "2")]
     MD5,
+}
+
+#[derive(Deserialize)]
+pub enum GameVersionStatus {
+    #[serde(rename = "1")]
+    Released,
+    #[serde(rename = "2")]
+    Beta,
+    #[serde(rename = "3")]
+    Alpha,
+}
+
+
+#[derive(Deserialize)]
+pub enum GameVersionTypeStatus {
+    #[serde(rename = "1")]
+    Normal,
+    #[serde(rename = "2")]
+    Deleted,
+}
+
+#[derive(Deserialize)]
+pub enum CoreStatus {
+    #[serde(rename = "1")]
+    Draft,
+    #[serde(rename = "2")]
+    Test,
+    #[serde(rename = "3")]
+    PendingReview,
+    #[serde(rename = "4")]
+    Rejected,
+    #[serde(rename = "5")]
+    Approved,
+    #[serde(rename = "6")]
+    Live,
+}
+
+#[derive(Deserialize)]
+pub enum CoreApiStatus {
+    #[serde(rename = "1")]
+    Private,
+    #[serde(rename = "2")]
+    Public,
 }

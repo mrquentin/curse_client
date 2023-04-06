@@ -47,7 +47,16 @@ pub struct GetFeaturedModsRequestBody {
     pub exclude_mod_ids: Vec<i32>,
     #[serde(rename = "gameVersionTypeId")]
     pub game_version_type_id: Option<i32>,
+}
 
+impl GetFeaturedModsRequestBody {
+    pub fn new(game_id: i32, exclude_mod_ids: Vec<i32>, game_version_type_id: Option<i32>) -> Self {
+        Self {
+            game_id,
+            exclude_mod_ids,
+            game_version_type_id,
+        }
+    }
 }
 
 #[derive(Deserialize)]

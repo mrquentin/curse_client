@@ -14,7 +14,7 @@ impl<'c> FingerprintsEndpoint<'c> {
     pub async fn get_fingerprints_by_game_id(&self, game_id: i32, fingerprints: Vec<i32>) -> Result<FingerprintsMatchesResult> {
         let body = GetFingerprintMatchesRequestBody::new(fingerprints);
         let endpoint = self.endpoint()?.join(game_id.to_string().as_str())?;
-        let resp = self.0.client.post(endpoint).body(&body).send().await?;
+        let resp = self.0.client.post(endpoint).json(&body).send().await?;
 
         Ok(resp.json::<GetFingerprintMatchesResponse>().await?.data)
     }
@@ -22,7 +22,7 @@ impl<'c> FingerprintsEndpoint<'c> {
     pub async fn get_fingerprints(&self, fingerprints: Vec<i32>) -> Result<FingerprintsMatchesResult> {
         let body = GetFingerprintMatchesRequestBody::new(fingerprints);
         let endpoint = self.endpoint()?;
-        let resp = self.0.client.post(endpoint).body(&body).send().await?;
+        let resp = self.0.client.post(endpoint).json(&body).send().await?;
 
         Ok(resp.json::<GetFingerprintMatchesResponse>().await?.data)
     }
@@ -30,7 +30,7 @@ impl<'c> FingerprintsEndpoint<'c> {
     pub async fn get_fingerprints_by_game_id_fuzzy(&self, game_id: i32, folders: HashMap<String, Vec<i32>>) -> Result<FingerprintFuzzyMatchResult> {
         let body = GetFuzzyMatchesRequestBody::new(game_id, folders);
         let endpoint = self.endpoint()?.join("/fuzzy")?.join(game_id.to_string().as_str())?;
-        let resp = self.0.client.post(endpoint).body(&body).send().await?;
+        let resp = self.0.client.post(endpoint).json(&body).send().await?;
 
         Ok(resp.json::<GetFingerprintFuzzyMatchesResponse>().await?.data)
     }
@@ -38,7 +38,7 @@ impl<'c> FingerprintsEndpoint<'c> {
     pub async fn get_fingerprints_fuzzy(&self, game_id: i32, folders: HashMap<String, Vec<i32>>) -> Result<FingerprintFuzzyMatchResult> {
         let body = GetFuzzyMatchesRequestBody::new(game_id, folders);
         let endpoint = self.endpoint()?.join("/fuzzy")?;
-        let resp = self.0.client.post(endpoint).body(&body).send().await?;
+        let resp = self.0.client.post(endpoint).json(&body).send().await?;
 
         Ok(resp.json::<GetFingerprintFuzzyMatchesResponse>().await?.data)
     }

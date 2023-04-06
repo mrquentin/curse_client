@@ -43,4 +43,8 @@ impl Client {
     pub fn fingerprints(&self) -> endpoints::fingerprints::FingerprintsEndpoint {
         endpoints::fingerprints::FingerprintsEndpoint(self)
     }
+
+    pub fn minecraft(&self) -> endpoints::minecraft::MinecraftEndpoint {
+        endpoints::minecraft::MinecraftEndpoint(self)
+    }
 }

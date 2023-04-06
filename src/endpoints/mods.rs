@@ -35,7 +35,7 @@ impl<'c> ModsEndpoint<'c> {
     pub async fn get_featured_mods(&self, game_id: i32, exclude_mod_ids: Vec<i32>, game_version_type_id: Option<i32>) -> Result<FeaturedModsResponse> {
         let body = GetFeaturedModsRequestBody::new(game_id, exclude_mod_ids, game_version_type_id);
         let endpoint = self.endpoint()?.join("featured")?;
-        let resp = self.0.client.post(endpoint).body(&body).send().await?;
+        let resp = self.0.client.post(endpoint).json(&body).send().await?;
 
         Ok(resp.json::<GetFeaturedModsResponse>().await?.data)
     }

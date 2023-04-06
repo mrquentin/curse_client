@@ -1,4 +1,5 @@
 use serde::Deserialize;
+use crate::models::enums::{CoreApiStatus, CoreStatus};
 
 #[derive(Deserialize)]
 pub struct Game {
@@ -6,11 +7,11 @@ pub struct Game {
     pub name: String,
     pub slug: String,
     #[serde(alias = "dateModified")]
-    pub date_modified: Option<String>,
+    pub date_modified: String,
     pub assets: GameAsset,
-    pub status: Option<u8>,
+    pub status: CoreStatus,
     #[serde(rename = "apiStatus")]
-    pub api_status: Option<u8>,
+    pub api_status: CoreApiStatus,
 }
 
 #[derive(Deserialize)]
