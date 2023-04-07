@@ -1,10 +1,10 @@
 use reqwest::Url;
 use anyhow::Result;
-use crate::Client;
+use crate::CurseClient;
 
 use crate::models::categories::{Category, GetCategoriesResponse};
 
-pub struct CategoriesEndpoint<'c>(pub &'c Client);
+pub struct CategoriesEndpoint<'c>(pub &'c CurseClient);
 
 impl<'c> CategoriesEndpoint<'c> {
     fn endpoint(&self) -> Result<Url> {

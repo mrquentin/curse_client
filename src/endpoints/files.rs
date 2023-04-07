@@ -1,10 +1,10 @@
 use reqwest::Url;
 use anyhow::Result;
-use crate::Client;
+use crate::CurseClient;
 
 use crate::models::files::{File, GetFilesResponse, GetFilesSearchParameters, GetModFileResponse, GetModFilesRequestBody, GetModFilesResponse};
 
-pub struct FilesEndpoint<'c>(pub &'c Client);
+pub struct FilesEndpoint<'c>(pub &'c CurseClient);
 
 impl<'c> FilesEndpoint<'c> {
     fn endpoint(&self) -> Result<Url> {

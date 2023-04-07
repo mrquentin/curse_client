@@ -1,9 +1,9 @@
 use reqwest::Url;
 use anyhow::Result;
-use crate::Client;
+use crate::CurseClient;
 use crate::models::minecraft::{GetMinecraftGameVersionResponse, GetMinecraftGameVersionsResponse, GetMinecraftModLoadersVersionResponse, GetMinecraftModLoaderVersionResponse, MinecraftGameVersion, MinecraftModLoaderIndex, MinecraftModLoaderVersion};
 
-pub struct MinecraftEndpoint<'c>(pub &'c Client);
+pub struct MinecraftEndpoint<'c>(pub &'c CurseClient);
 
 impl<'c> MinecraftEndpoint<'c> {
     fn endpoint(&self) -> Result<Url> {

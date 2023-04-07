@@ -5,23 +5,23 @@ use anyhow::Result;
 use reqwest::{Url, header::{HeaderMap, HeaderValue}};
 use std::sync::Arc;
 
-pub struct Client {
+pub struct CurseClient {
     api_base: Url,
     client: Arc<reqwest::Client>,
 }
 
-impl Client {
-    pub fn new(key: &str) -> Result<Client> {
+impl CurseClient {
+    pub fn new(key: String) -> Result<CurseClient> {
         let api_base = Url::parse("https://api.curseforge.com")?;
 
         let mut headers = HeaderMap::new();
-        headers.insert("7870-ADE6", HeaderValue::from_str(key)?);
+        headers.insert("x-api-key", HeaderValue::from_str(key.as_str())?);
 
         let client = Arc::new(reqwest::Client::builder()
             .default_headers(headers)
             .build()?);
 
-        Ok(Client { api_base, client })
+        Ok(CurseClient { api_base, client })
     }
 
     pub fn games(&self) -> endpoints::games::GamesEndpoint {

@@ -1,9 +1,9 @@
 use reqwest::Url;
 use anyhow::Result;
-use crate::Client;
+use crate::CurseClient;
 use crate::models::mods::{FeaturedModsResponse, GetFeaturedModsRequestBody, GetFeaturedModsResponse, GetModResponse, GetModsByIdsListRequestBody, GetModsResponse, Mod, ModSearchParameters, SearchModsResponse};
 
-pub struct ModsEndpoint<'c>(pub &'c Client);
+pub struct ModsEndpoint<'c>(pub &'c CurseClient);
 
 impl<'c> ModsEndpoint<'c> {
     fn endpoint(&self) -> Result<Url> {

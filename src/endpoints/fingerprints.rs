@@ -1,10 +1,10 @@
 use std::collections::HashMap;
 use reqwest::Url;
 use anyhow::Result;
-use crate::Client;
+use crate::CurseClient;
 use crate::models::fingerprints::{FingerprintFuzzyMatchResult, FingerprintsMatchesResult, GetFingerprintFuzzyMatchesResponse, GetFingerprintMatchesRequestBody, GetFingerprintMatchesResponse, GetFuzzyMatchesRequestBody};
 
-pub struct FingerprintsEndpoint<'c>(pub &'c Client);
+pub struct FingerprintsEndpoint<'c>(pub &'c CurseClient);
 
 impl<'c> FingerprintsEndpoint<'c> {
     fn endpoint(&self) -> Result<Url> {
