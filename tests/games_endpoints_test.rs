@@ -4,12 +4,6 @@ struct TestContext {
     client: CurseClient,
 }
 
-impl Drop for TestContext {
-    fn drop(&mut self) {
-        println!("Test teardown ...");
-    }
-}
-
 fn setup() -> TestContext {
     let key = "$2a$10$EnRkD7vrTASVq651KWgFweFxasKtm3kFur30Dw3t6RZ6Me4TiiVGq";
     let client = CurseClient::new(key.to_string()).unwrap();

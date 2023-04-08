@@ -1,4 +1,3 @@
-use reqwest::Url;
 use anyhow::Result;
 use crate::CurseClient;
 
