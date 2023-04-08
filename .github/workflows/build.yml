@@ -20,12 +20,13 @@ jobs:
       with:
         crate: cargo-bump
         version: "^1.1.0"
-    - run: cargo bump major
-      if: "contains(github.event.head_commit.message, 'major:')"
-    - run: cargo bump minor
-      if: "contains(github.event.head_commit.message, 'minor:')"
-    - run: cargo bump
-      if: "contains(github.event.head_commit.message, 'fix:')"
+    - uses: mrquentin/cargo-bump@main
+#    - run: cargo bump major
+#      if: "contains(github.event.head_commit.message, 'major:')"
+#    - run: cargo bump minor
+#      if: "contains(github.event.head_commit.message, 'minor:')"
+#    - run: cargo bump
+#      if: "contains(github.event.head_commit.message, 'fix:')"
     - name: Commit and push new version
       env:
         CI_COMMIT_MESSAGE: "[ci skip] Bump Version"
