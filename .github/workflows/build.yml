@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: mrquentin/commit-commands@v1.1
+    - uses: mrquentin/commit-commands@v1.2
     - name: Build
       run: cargo build --verbose
     - name: Run tests
