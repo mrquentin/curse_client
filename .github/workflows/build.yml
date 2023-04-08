@@ -16,7 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: cargo install cargo-bump
+    - uses: baptiste0928/cargo-install@v2
+      with:
+        crate: cargo-bump
+        version: "^1.1.0"
     - run: cargo bump major
       if: "contains(github.event.head_commit.message, 'major:')"
     - run: cargo bump minor
