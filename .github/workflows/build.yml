@@ -16,7 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: mrquentin/cargo-bump@v1.3
+    - run: cargo install cargo-bump
+    - uses: mrquentin/cargo-bump@main
     - name: Commit and push new version
       env:
         CI_COMMIT_MESSAGE: "[ci skip] Bump Version"
