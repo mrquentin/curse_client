@@ -1,7 +1,7 @@
 use serde::Deserialize;
 use crate::models::enums::{CoreApiStatus, CoreStatus};
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct Game {
     pub id: i32,
     pub name: String,
@@ -14,7 +14,7 @@ pub struct Game {
     pub api_status: CoreApiStatus,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GameAsset {
     #[serde(rename = "iconUrl")]
     pub icon_url: Option<String>,
@@ -24,14 +24,14 @@ pub struct GameAsset {
     pub cover_url: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GameVersion {
     pub id: i32,
     pub slug: String,
     pub name: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct SortableGameVersion {
     #[serde(alias = "gameVersionName")]
     pub game_version_name: String,
@@ -45,14 +45,14 @@ pub struct SortableGameVersion {
     pub game_version_type_id: Option<i32>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GameVersionByType {
     #[serde(alias = "type")]
     pub version_type: i32,
     pub versions: Vec<GameVersion>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GameVersionType {
     pub id: i32,
     #[serde(alias = "gameId")]
@@ -61,23 +61,23 @@ pub struct GameVersionType {
     pub slug: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GetGamesResponse {
     pub data: Vec<Game>,
     pub pagination: super::pagination::Pagination,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GetGameResponse {
     pub data: Game
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GetGameVersionsResponse {
     pub data: Vec<GameVersionByType>
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct GetGameVersionTypesResponse {
     pub data: Vec<GameVersionType>
 }

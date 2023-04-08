@@ -12,9 +12,10 @@ pub struct CurseClient {
 
 impl CurseClient {
     pub fn new(key: String) -> Result<CurseClient> {
-        let api_base = Url::parse("https://api.curseforge.com")?;
+        let api_base = Url::parse("https://api.curseforge.com/")?;
 
         let mut headers = HeaderMap::new();
+        headers.insert("Accept", HeaderValue::from_static("application/json"));
         headers.insert("x-api-key", HeaderValue::from_str(key.as_str())?);
 
         let client = Arc::new(reqwest::Client::builder()

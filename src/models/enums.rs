@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_repr::Deserialize_repr;
 
 #[derive(Deserialize)]
 pub enum ModLoaderInstallMethod {
@@ -220,26 +221,20 @@ pub enum GameVersionTypeStatus {
     Deleted,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize_repr, Debug)]
+#[repr(u8)]
 pub enum CoreStatus {
-    #[serde(rename = "1")]
-    Draft,
-    #[serde(rename = "2")]
-    Test,
-    #[serde(rename = "3")]
-    PendingReview,
-    #[serde(rename = "4")]
-    Rejected,
-    #[serde(rename = "5")]
-    Approved,
-    #[serde(rename = "6")]
-    Live,
+    Draft = 1,
+    Test = 2,
+    PendingReview = 3,
+    Rejected = 4,
+    Approved = 5,
+    Live = 6,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize_repr, Debug)]
+#[repr(u8)]
 pub enum CoreApiStatus {
-    #[serde(rename = "1")]
-    Private,
-    #[serde(rename = "2")]
-    Public,
+    Private = 1,
+    Public = 2,
 }
